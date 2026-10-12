@@ -1,0 +1,9 @@
+numpy>=2.0
+scipy>=1.14
+pandas>=2.2
+astropy>=7.0
+astroquery>=0.4.11
+click>=8.1
+pyyaml>=6.0
+matplotlib>=3.9
+flask>=3.0

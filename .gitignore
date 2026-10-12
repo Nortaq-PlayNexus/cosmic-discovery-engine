@@ -1,0 +1,48 @@
+# Secrets — never commit. .env.example is the committed template.
+.env
+.env.*
+!.env.example
+
+# Runtime data: SQLite database, cached/downloaded light curves, logs.
+# These are regenerable and can be hundreds of MB.
+data/
+*.db
+*.db-wal
+*.db-shm
+*.log
+npz_cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Exports produced by `cosmic-discovery export`
+candidates.json
+candidates.csv
+candidates.md
+report.json
+report.csv
+report.md
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store

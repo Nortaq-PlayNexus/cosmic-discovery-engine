@@ -1,0 +1,47 @@
+# Cosmic Discovery Engine — default configuration
+
+database:
+  path: ./data/cosmic_discovery.db
+
+sources:
+  mast:
+    timeout: 120
+    max_retries: 3
+    retry_delay: 5
+    cache_dir: ./data/cache/mast
+  exoplanet_archive:
+    timeout: 60
+    max_retries: 3
+    retry_delay: 3
+  gaia:
+    timeout: 120
+    max_retries: 3
+    retry_delay: 5
+
+pipeline:
+  min_period_days: 0.1
+  max_period_days: 50.0
+  min_transit_depth_ppm: 100
+  max_transit_depth_ppm: 50000
+  min_snr: 5.0
+  # Detrend window in points. Used only if it EXCEEDS the auto-computed minimum,
+  # which is 12x the longest transit duration in the BLS duration grid below.
+  # 101 was the original default and is 3.4 h at TESS 2-min cadence, which
+  # destroyed ~95% of a 6 h transit. See DECISIONS 2026-10-13.
+  detrend_window: 101
+  outlier_sigma: 5.0
+  bls_duration_grid: [0.05, 0.1, 0.15, 0.2]
+  ls_nfev: 1000
+
+crossmatch:
+  search_radius_arcsec: 10.0
+  gaia_search_radius_arcsec: 5.0
+
+dashboard:
+  host: 127.0.0.1
+  port: 5050
+  candidates_per_page: 50
+
+logging:
+  level: INFO
+  file: ./data/cosmic_discovery.log

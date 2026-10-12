@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cosmic-discovery-engine"
+version = "0.1.0"
+description = "Production-quality astronomical anomaly discovery platform"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Cosmic Discovery Engine" }]
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+    "pandas>=2.2",
+    "astropy>=7.0",
+    "astroquery>=0.4.11",
+    "click>=8.1",
+    "pyyaml>=6.0",
+    "matplotlib>=3.9",
+    "flask>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+cosmic-discovery = "cosmic_discovery.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cosmic_discovery"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
