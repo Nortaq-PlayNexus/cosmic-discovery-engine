@@ -1,0 +1,34 @@
+# Normalise line endings so Windows checkouts do not rewrite every file and
+# produce a diff that is pure CRLF/LF noise.
+* text=auto
+
+# Python source: LF in the repo, native on checkout.
+*.py   text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.cfg  text eol=lf
+
+# PowerShell must stay CRLF on Windows or it can fail to run.
+*.ps1  text eol=crlf
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# Markdown: keep LF to avoid whitespace churn in docs.
+*.md   text eol=lf
+*.txt  text eol=lf
+
+# Binary — never touch.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.fits binary
+*.npz  binary
+*.db   binary
+*.sqlite binary
+*.sqlite3 binary
